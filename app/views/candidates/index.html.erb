@@ -1,0 +1,26 @@
+<%= flash[:notice]  %>
+<h1>Candidates Index Html Erb</h1>
+<a href="/candidates/new">Add Candidate</a>
+<table>
+  <th>
+    <td></td>
+    <td>Total Votes</td>
+    <td>Name:</td>
+    <td>Party:</td>
+    <td>Age:</td>
+    <td>Politics:</td>
+    <td>Action:</td>
+  </th>
+  <% @candidates.each do |candidate| %>
+    <tr>
+      <td><%= link_to "VOTE", vote_candidate_path(candidate.id), method: "post" %></ td>
+      <td><%= candidate.votes %></ td>
+      <td><%= link_to candidate.name, candidate_path(candidate.id) %></ td>
+      <td><%= candidate.party %></td>
+      <td><%= candidate.age %></td>
+      <td><%= candidate.politics %></td>
+      <td><%= link_to "Edit", edit_candidate_path(candidate.id) %></td>
+      <td><%= link_to "Delete", candidate_path(candidate.id), method: "delete" , data: {confirm: "Are you sure!?!?!"} %></td>
+    </tr>
+  <% end %>
+</table>
