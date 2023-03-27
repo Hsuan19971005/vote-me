@@ -1,4 +1,3 @@
-<%= flash[:notice]  %>
 <h1>Candidates Index Html Erb</h1>
 <a href="/candidates/new">Add Candidate</a>
 <table>
@@ -14,7 +13,7 @@
   <% @candidates.each do |candidate| %>
     <tr>
       <td><%= link_to "VOTE", vote_candidate_path(candidate.id), method: "post" %></ td>
-      <td><%= candidate.votes %></ td>
+      <td><%= candidate.vote_logs.size %></ td>
       <td><%= link_to candidate.name, candidate_path(candidate.id) %></ td>
       <td><%= candidate.party %></td>
       <td><%= candidate.age %></td>
